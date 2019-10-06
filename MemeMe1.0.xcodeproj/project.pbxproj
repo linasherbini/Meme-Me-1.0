@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		A82817F92346E68E00425AE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82817F82346E68E00425AE7 /* AppDelegate.swift */; };
 		A82817FB2346E68E00425AE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82817FA2346E68E00425AE7 /* SceneDelegate.swift */; };
-		A82817FD2346E68E00425AE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82817FC2346E68E00425AE7 /* ViewController.swift */; };
+		A82817FD2346E68E00425AE7 /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82817FC2346E68E00425AE7 /* MemeEditorViewController.swift */; };
 		A82818002346E68E00425AE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82817FE2346E68E00425AE7 /* Main.storyboard */; };
 		A82818022346E69100425AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A82818012346E69100425AE7 /* Assets.xcassets */; };
 		A82818052346E69100425AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82818032346E69100425AE7 /* LaunchScreen.storyboard */; };
+		A828180F23496B1800425AE7 /* MemeMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828180E23496B1800425AE7 /* MemeMe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A82817F52346E68E00425AE7 /* MemeMe1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82817F82346E68E00425AE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A82817FA2346E68E00425AE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A82817FC2346E68E00425AE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A82817FC2346E68E00425AE7 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 		A82817FF2346E68E00425AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A82818012346E69100425AE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A82818042346E69100425AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A82818062346E69100425AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A828180E23496B1800425AE7 /* MemeMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				A82817F82346E68E00425AE7 /* AppDelegate.swift */,
 				A82817FA2346E68E00425AE7 /* SceneDelegate.swift */,
-				A82817FC2346E68E00425AE7 /* ViewController.swift */,
+				A82817FC2346E68E00425AE7 /* MemeEditorViewController.swift */,
+				A828180E23496B1800425AE7 /* MemeMe.swift */,
 				A82817FE2346E68E00425AE7 /* Main.storyboard */,
 				A82818012346E69100425AE7 /* Assets.xcassets */,
 				A82818032346E69100425AE7 /* LaunchScreen.storyboard */,
@@ -138,8 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A82817FD2346E68E00425AE7 /* ViewController.swift in Sources */,
+				A82817FD2346E68E00425AE7 /* MemeEditorViewController.swift in Sources */,
 				A82817F92346E68E00425AE7 /* AppDelegate.swift in Sources */,
+				A828180F23496B1800425AE7 /* MemeMe.swift in Sources */,
 				A82817FB2346E68E00425AE7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
