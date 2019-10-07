@@ -27,16 +27,14 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     //MARK:- View & Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.delegate = self
-        bottomTextField.delegate = self
         specifyTextField(topTextField, meme.topTextField)
         specifyTextField(bottomTextField, meme.bottomTextField)
         shareButton.isEnabled = false
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera) //makes sure the device has a camera available
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera) //makes sure the device has a camera available
         subscribeToKeyboardNotifications()
     }
     
@@ -51,6 +49,7 @@ UINavigationControllerDelegate , UITextFieldDelegate {
             memeImageView.image = image
             topTextField.topAnchor.constraint(equalTo:memeImageView.topAnchor, constant: +35).isActive = true
             bottomTextField.bottomAnchor.constraint(equalTo: memeImageView.bottomAnchor, constant: -35).isActive = true
+            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         }
         dismiss(animated: true, completion: nil)
         shareButton.isEnabled = true
@@ -80,27 +79,22 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     //specifcying text field attributes for top and bottom text fields
     func specifyTextField(_ sender: UITextField , _ text: String) {
         //setting default attributes
-        let memeTextAttributes: [NSAttributedString.Key: Any] = [
+        let textAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.strokeColor: UIColor.black ,
             NSAttributedString.Key.foregroundColor: UIColor.white ,
             NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSAttributedString.Key.strokeWidth: -4.5
         ]
         sender.text = text
-        sender.defaultTextAttributes = memeTextAttributes
+        sender.defaultTextAttributes = textAttributes
         sender.textAlignment = .center
+        sender.delegate = self //sets the textfield delegate
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         //Makes sure to not edit user input texts
         if textField.text == "TOP" || textField.text == "BOTTOM" {
             textField.text = ""
-        }
-        //Makes sure to not apply keyboard adjustments to top text field
-        if textField == topTextField {
-            unsubscribeFromKeyboardNotifications()
-        } else {
-            subscribeToKeyboardNotifications()
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -116,15 +110,13 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     }
     //generates a memed picture with texts
     func generateMemedImage() -> UIImage {
-        navBar.isHidden = true
-        toolBar.isHidden = true
+        hideToolBars(true) //hides toolbar and navigation bar
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        navBar.isHidden = false
-        toolBar.isHidden = false
+        hideToolBars(false)
         return memedImage
     }
     
@@ -162,7 +154,9 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     }
     //sets the keyboard adjustments to move the view when the bottom text field is selected
     @objc func keyboardWillShow(_ notification:Notification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        if bottomTextField.isEditing {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
 
     @objc func keyboardWillHide(_ notification:Notification){
@@ -175,5 +169,16 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         return keyboardSize.cgRectValue.height
     }
     
+    //MARK:- Other functions
+    //hide toolbars function
+    func hideToolBars(_ hide: Bool) {
+        if hide {
+            toolBar.isHidden = hide
+            navBar.isHidden = hide
+        } else {
+            toolBar.isHidden = !hide
+            navBar.isHidden = !hide
+        }
+    }
 }
 
